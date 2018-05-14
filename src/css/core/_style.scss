@@ -1,0 +1,54 @@
+.ql-mention-list-item:not(:empty){
+    height : 50px;
+    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox;      /* TWEENER - IE 10 */
+    display: -webkit-flex;     /* NEW - Chrome */
+    display: flex;
+    min-width: 0;
+    line-height : 40px;
+    padding : 5px 10px;
+    background : $clr-background;
+    cursor : pointer;
+}  
+
+.ql-mention-list-item{
+    background : $clr-background;
+    width : 100%;
+}
+.ql-mention-list-item:not(:last-of-type){
+    border-bottom : solid 1px $clr-border;
+}
+.ql-mention-list-item:hover, .ql-mention-list-item.selected{
+    background : $clr-hover;
+}
+.ql-mention-list-item > img, .ql-mention-list-item > .at{
+    height : 40px;
+    width : 40px;
+    margin-right: 10px;
+    border-radius: 50%;
+    font-size : 30px;
+    text-align: center;
+    font-weight: bold;
+}
+
+mention:not(.editing){
+   font-size: 0;
+   display : inline;
+   padding: 0 2px;
+}
+mention.editing{
+    padding : 2px;
+    display : inline;
+    background-color : $clr-border;
+    border-radius: 4px;
+}
+mention:not(.editing):before {
+    content: attr(data-label);
+    font-size: 13px;
+    font-weight: bold;
+}
+mention.editing::first-letter {
+    font-size: 16px;
+    font-weight: bold;
+}
