@@ -61,7 +61,6 @@ class Mention {
         this.container = document.querySelector(options.container);
         quill.on('text-change', this.onChange.bind(this));
         //Enter
-        console.log("KEYBOARD?",quill.keyboard);
         quill.keyboard.addBinding(
           { 
             key: 13, 
@@ -185,7 +184,6 @@ class Mention {
     }
 
     onChange(delta, _ , source){
-        console.log("ON CHANGE", delta, source);
         var index = Math.max(0,delta.ops.reduce(function(index, ops){
             return index + (ops.retain || 0) - (ops.delete || 0);
         },0));
@@ -251,7 +249,6 @@ class Mention {
 
     validateMention(mention, element){
         var oldLength = mention.domNode.innerText.length;
-        console.log("VALIDATE MENTION", mention, element);
         mention.insertAt(0, element.id);
         mention.deleteAt(element.id.length, oldLength);
         mention.domNode.setAttribute('data-id',element.id);

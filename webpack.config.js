@@ -3,10 +3,10 @@ const path = require("path");
 const ExtractTextWebpackPlugin = require("extract-text-webpack-plugin");
 
 const config = {
-    entry: './src/quill-mentions.js',
+    entry: './src/ql-mentions.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'quill-mentions.js'
+        filename: 'ql-mentions.js'
     },
     module: {
         rules: [{
@@ -23,7 +23,7 @@ const config = {
       }]
     },
     plugins: [
-        new ExtractTextWebpackPlugin("ql-mention.css")
+        new ExtractTextWebpackPlugin("ql-mentions.css")
     ]
   
 };
