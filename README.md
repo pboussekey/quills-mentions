@@ -19,8 +19,11 @@ var quill = new Quill('#editor', {
 });
 ```
 
-**callback : ** Function used to retrieved mentions. It can be synchronous or asynchronous (return a promise).
+**callback :** 
+Function used to retrieved mentions. It can be synchronous or asynchronous (return a promise).
+
 IN - search : string
+
 OUT - array : 
 ```
 [
@@ -32,7 +35,8 @@ OUT - array :
     }
 ]
 ```
-**container : ** Is a css selector of the html element that will contains the result
+**container :** 
+Is a css selector of the html element that will contains the result
 
 
 
