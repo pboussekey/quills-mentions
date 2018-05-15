@@ -1,6 +1,7 @@
 {
     "name": "twic-mentions",
-    "version" : "0.0.2",
+    "version" : "0.0.3",
+    "description" : "Custom module for Quilljs to allow mentions."
     "main" : "dist/ql-mentions.js",
     "devDependencies": {
         "autoprefixer": "^8.5.0",
