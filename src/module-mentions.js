@@ -58,7 +58,7 @@ class Mention {
         this.openAt = null;
         this.endAt = null;
         this.at = [];
-        this.container = document.querySelector(options.container);
+        this.selector = options.container;
         quill.on('text-change', this.onChange.bind(this));
         //Enter
         quill.keyboard.addBinding(
@@ -141,7 +141,8 @@ class Mention {
                 if(this.selectedElement){
                     this.selectedElement.classList.remove('selected');
                 }
-                this.selectedElement = this.container.querySelectorAll('button')[this.selectedIndex];
+                var container = document.querySelector(this.selector);
+                this.selectedElement = container.querySelectorAll('button')[this.selectedIndex];
                 if(this.selectedElement){
                     this.selectedElement.classList.add('selected');
                 }
@@ -174,7 +175,8 @@ class Mention {
                 if(this.selectedElement){
                     this.selectedElement.classList.remove('selected');
                 }
-                this.selectedElement = this.container.querySelectorAll('button')[this.selectedIndex];
+                var container = document.querySelector(this.selector);
+                this.selectedElement = container.querySelectorAll('button')[this.selectedIndex];
                 if(this.selectedElement){
                     this.selectedElement.classList.add('selected');
                 }
@@ -275,7 +277,7 @@ class Mention {
     }
 
     emptyList(){
-        this.container.innerHTML = '';
+        document.querySelector(this.selector).innerHTML = '';
         this.selectedIndex = 0;
         this.selectedElement = null;
         document.removeEventListener('click', this.emptyList, true );
@@ -291,6 +293,7 @@ class Mention {
     processList(mention, list){
         this.emptyList();
         this.at = list;
+        var container = document.querySelector(this.selector);
         list.forEach(function(element, index){ 
             var button = document.createElement('button');
             button.className = 'ql-mention-list-item';
@@ -321,7 +324,7 @@ class Mention {
                button.appendChild(at);
             }
             button.innerHTML += (element.text || element.label);
-            this.container.appendChild(button);
+            container.appendChild(button);
         }.bind(this));
         document.addEventListener('click', this.emptyList.bind(this), true );
     } 
