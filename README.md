@@ -2,6 +2,14 @@
 
 Custom module for [Quill.js](https://github.com/quilljs/quill). to allow mentions.
 
+## Install
+
+Use npm :
+
+```
+npm install twic-mentions --save
+```
+
 ## Usage
 
 ### Configuration

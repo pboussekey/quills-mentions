@@ -193,6 +193,9 @@ class Mention {
         if(this.mention){
             this.searchAt(this.mention, this.mention.domNode.innerText.substring(1).trim());
         }
+        else{
+            this.emptyList();
+        }
     }
 
     searchAt(mention, search){
@@ -230,6 +233,7 @@ class Mention {
         this.quill.insertEmbed(index, 'mention', mention, Quill.sources.API);
         mention = (this.quill.getLeaf(index)[0].next || this.quill.getLeaf(index)[0].parent);
         this.quill.setSelection(mention.offset() + 1);
+        console.log("ADD MENTION", index, mention.offset());
         return mention;
     }
 
