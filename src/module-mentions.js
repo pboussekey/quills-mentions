@@ -60,22 +60,6 @@ class Mention {
         this.at = [];
         this.selector = options.container;
         quill.on('text-change', this.onChange.bind(this));
-        //Enter
-        quill.keyboard.addBinding(
-          { 
-            key: 13, 
-            format: ['mention']
-          }, function() {
-            this.mention = quill.getLeaf(range.index)[0].parent;
-            if(this.mention.domNode.classList.contains('editing')){
-                this.selectElement();
-            }
-            else{
-                this.mention.remove();
-                this.mention = null;
-            }
-            return false;
-        });
         //Space : Validate or strip mention
         quill.keyboard.addBinding({
           key : ' ',
@@ -245,7 +229,7 @@ class Mention {
         this.quill.insertText(index," ", Quill.sources.API);
         this.quill.insertEmbed(index, 'mention', mention, Quill.sources.API);
         mention = (this.quill.getLeaf(index)[0].next || this.quill.getLeaf(index)[0].parent);
-        this.quill.setSelection(index + 1);
+        this.quill.setSelection(mention.offset() + 1);
         return mention;
     }
 
