@@ -1,6 +1,7 @@
 const webpack = require("webpack");
 const path = require("path");
 const ExtractTextWebpackPlugin = require("extract-text-webpack-plugin");
+const WebpackAutoInject = require('webpack-auto-inject-version');
 
 const config = {
     entry: './src/ql-mentions.js',
@@ -23,7 +24,17 @@ const config = {
       }]
     },
     plugins: [
-        new ExtractTextWebpackPlugin("ql-mentions.css")
+        new ExtractTextWebpackPlugin("ql-mentions.css"),
+        new WebpackAutoInject({
+            components: {
+                AutoIncreaseVersion: true
+            },
+            componentsOptions: {
+              AutoIncreaseVersion: {
+                runInWatchMode: false // it will increase version with every single build!
+              }
+            }
+        })
     ]
   
 };
