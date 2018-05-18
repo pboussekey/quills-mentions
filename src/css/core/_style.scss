@@ -53,5 +53,6 @@ mention.editing::first-letter {
     font-weight: bold;
 }
 mention:not(.editing).selected:before{
-    background : $clr-hover;
+    background : $clr-selected;
+    color : #FFF;
 }

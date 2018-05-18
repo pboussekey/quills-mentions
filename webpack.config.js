@@ -31,7 +31,7 @@ const config = {
             },
             componentsOptions: {
               AutoIncreaseVersion: {
-                runInWatchMode: false // it will increase version with every single build!
+                runInWatchMode: false 
               }
             }
         })

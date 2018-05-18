@@ -60,7 +60,7 @@ class Mention {
         this.at = [];
         this.selector = options.container;
         quill.on('text-change', this.onChange.bind(this));
-        quill.on('selection-change', onSelectionChange.bind(this));
+        quill.on('selection-change', this.onSelectionChange.bind(this));
         //Space : Validate or strip mention
         quill.keyboard.addBinding({
           key : ' ',

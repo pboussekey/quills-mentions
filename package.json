@@ -1,6 +1,6 @@
 {
     "name": "twic-mentions",
-    "version": "0.0.13",
+    "version": "0.0.15",
     "description": "Custom module for Quilljs to allow mentions.",
     "main": "dist/ql-mentions.js",
     "devDependencies": {
@@ -22,6 +22,6 @@
     "scripts": {
         "watch": "webpack --watch",
         "build": "webpack",
-        "publish": "webpack --env.patch && npm publish"
+        "deploy": "webpack --env.patch && npm publish"
     }
 }
