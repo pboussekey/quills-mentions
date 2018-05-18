@@ -206,16 +206,18 @@ class Mention {
                mention.classList.remove('selected'); 
             });
         }
-        var i = range.index;
-        while(i < range.index + range.length ){
-            var leaf = this.quill.getLeaf(i)[0];
-            var parent = leaf.parent;
-            if(parent.domNode.tagName === 'MENTION' && !parent.domNode.classList.contains('editing')){
-                parent.domNode.classList.add("selected");
-                i += parent.domNode.innerText.length;
-            }
-            else{
-                i++;
+        if(range){
+            var i = range.index;
+            while(i < range.index + range.length ){
+                var leaf = this.quill.getLeaf(i)[0];
+                var parent = leaf.parent;
+                if(parent.domNode.tagName === 'MENTION' && !parent.domNode.classList.contains('editing')){
+                    parent.domNode.classList.add("selected");
+                    i += parent.domNode.innerText.length;
+                }
+                else{
+                    i++;
+                }
             }
         }
     }
