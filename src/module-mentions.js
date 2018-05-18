@@ -60,6 +60,7 @@ class Mention {
         this.at = [];
         this.selector = options.container;
         quill.on('text-change', this.onChange.bind(this));
+        quill.on('selection-change', onSelectionChange.bind(this));
         //Space : Validate or strip mention
         quill.keyboard.addBinding({
           key : ' ',
@@ -197,6 +198,27 @@ class Mention {
             this.emptyList();
         }
     }
+    
+    onSelectionChange(range){
+        var mentions = document.querySelectorAll('mention');
+        if(mentions && mentions.length){
+            mentions.forEach(function(mention){
+               mention.classList.remove('selected'); 
+            });
+        }
+        var i = range.index;
+        while(i < range.index + range.length ){
+            var leaf = this.quill.getLeaf(i)[0];
+            var parent = leaf.parent;
+            if(parent.domNode.tagName === 'MENTION' && !parent.domNode.classList.contains('editing')){
+                parent.domNode.classList.add("selected");
+                i += parent.domNode.innerText.length;
+            }
+            else{
+                i++;
+            }
+        }
+    }
 
     searchAt(mention, search){
         var r = this.options.callback(search);
@@ -232,8 +254,10 @@ class Mention {
         this.quill.insertText(index," ", Quill.sources.API);
         this.quill.insertEmbed(index, 'mention', mention, Quill.sources.API);
         mention = (this.quill.getLeaf(index)[0].next || this.quill.getLeaf(index)[0].parent);
-        this.quill.setSelection(mention.offset() + 1);
-        console.log("ADD MENTION", index, mention.offset());
+        setTimeout(function(){
+            this.quill.focus();
+            this.quill.setSelection(mention.offset() + 1);
+        }.bind(this));
         return mention;
     }
 
@@ -249,7 +273,7 @@ class Mention {
         setTimeout(function(){
             this.quill.focus();
             this.quill.setSelection(mention.offset() + mention.domNode.innerText.length + 1);
-        }.bind(this), 0);
+        }.bind(this));
     }
 
     stripMention(mention){

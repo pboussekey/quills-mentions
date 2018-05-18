@@ -1,4 +1,4 @@
-/** [AIV_SHORT]  Build version: 0.0.8 - Thursday, May 17th, 2018, 8:45:21 AM  **/ 
+/** [AIV_SHORT]  Build version: 0.0.13 - Friday, May 18th, 2018, 11:41:56 AM  **/ 
  .ql-mention-list-item:not(:empty) {
   height: 50px;
   display: -webkit-box;
@@ -54,4 +54,7 @@ mention:not(.editing):before {
 mention.editing::first-letter {
   font-size: 16px;
   font-weight: bold; }
+
+mention:not(.editing).selected:before {
+  background: #f0f0f0; }
  

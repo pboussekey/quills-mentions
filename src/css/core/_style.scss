@@ -52,3 +52,6 @@ mention.editing::first-letter {
     font-size: 16px;
     font-weight: bold;
 }
+mention:not(.editing).selected:before{
+    background : $clr-hover;
+}
